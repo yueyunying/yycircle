@@ -156,13 +156,14 @@ class ApplyFroJobVerify
     }
     public static function employerRestrictions($adhocJob,$employee)
     {
+        //WorkStatus::$applied
         $employerRestrictions = DB::table('member_certificate')->where('member_id',$employee->member_id)->where('employer_restrictions','>',0)->value('employer_restrictions');
         if ($employerRestrictions){
             $firstWorkDateTime = DB::table('job_schedules as js')
                 ->leftJoin('job as j','js.job_id','j.job_id')
                 ->where('member_id',$employee->member_id)
                 ->where('j.job_employer_admin_id',$adhocJob->job_employer_admin_id)
-                ->whereIn('work_status',WorkStatus::$applied)
+                ->whereIn('work_status',[2,5,6,8,11,13,14])
                 ->orderBy('s_id','Asc')
                 ->value('adjusted_checkin_time');
             if ($firstWorkDateTime){
