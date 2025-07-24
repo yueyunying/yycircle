@@ -4,7 +4,7 @@
     "homepage" : "https://github.com/yueyunying/yycircle",
     "keywords": ["laravel","yycircle"],
     "type": "library",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "authors": [
         {
             "name": "YY Circle Common Runtime Team",
